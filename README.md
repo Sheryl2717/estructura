@@ -41,14 +41,14 @@ void capturarpal(long buscar)
     cout << "Digite la palabra que desea añadir: ";
     getline(cin, nuevo->palabra);
 
-    do
-    {
         cout << "Digite el significado 1: ";
-        cin >> nuevo->corte1;
+        cin >> nuevo->significado1;
         cout << "Desea añadir otra palabra?";
+        cout << "1. Si \n";
+        cout << "2. No \n";
+        cin >> añadirpal
         if (nuevo->corte1 < 1.5 || nuevo->corte1 > 5)
             cout << "Nota fuera del rango, intente nuevamente\n";
-    } while (nuevo->corte1 < 1.5 || nuevo->corte1 > 5);
 
     do
     {
