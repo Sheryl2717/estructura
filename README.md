@@ -41,36 +41,94 @@ void capturarpal(long buscar)
     cout << "Digite la palabra que desea añadir: ";
     getline(cin, nuevo->palabra);
 
-        cout << "Digite el significado 1: ";
-        cin >> nuevo->significado1;
-        cout << "Desea añadir otra palabra?";
-        cout << "1. Si \n";
-        cout << "2. No \n";
-        cin >> añadirpal
-        if (nuevo->corte1 < 1.5 || nuevo->corte1 > 5)
-            cout << "Nota fuera del rango, intente nuevamente\n";
+       cout << "Digite el significado 1: ";
+cin >> nuevo->significado1;
 
-    do
-    {
-        cout << "Digite el significado 2: ";
-        cin >> nuevo->corte2;
-        if (nuevo->corte2 < 1.5 || nuevo->corte2 > 5)
-            cout << "Nota fuera del rango, intente nuevamente\n";
-    } while (nuevo->corte2 < 1.5 || nuevo->corte2 > 5);
+cout << "Desea añadir otro significado?\n";
+cout << "1. Si\n2. No\n";
+cin >> anadirpal;
 
-    do
+if (anadirpal == 1)
+{
+    cout << "Digite el significado 2: ";
+    cin >> nuevo->significado2;
+
+    cout << "Desea añadir otro significado?\n";
+    cout << "1. Si\n2. No\n";
+    cin >> anadirpal;
+
+    if (anadirpal == 1)
     {
         cout << "Digite el significado 3: ";
-        cin >> nuevo->corte3;
-        if (nuevo->corte3 < 1.5 || nuevo->corte3 > 5)
-            cout << "Nota fuera del rango, intente nuevamente\n";
-    } while (nuevo->corte3 < 1.5 || nuevo->corte3 > 5);
+        cin >> nuevo->significado3;
+    }
+}
 
-    nuevo->def = 0;
+cout << "La palabra fue guardada con exito\n";
+}
 
 
-    nuevo->siguiente = inicio; 
-    inicio = nuevo;
+int main()
+{
+    int op;
+    long cod;
 
-    cout << "Estudiante agregado con exito\n";
+    do
+    {
+        cout << "\nBienvenidos al Programa de Administracion del Curso\n";
+        cout << "1. Adicionar Palabra\n";
+        cout << "2. Consultar Palabra\n";
+        cout << "3. Editar Palabra\n";
+        cout << "4. Eliminar Palabra\n";
+        cout << "5. Imprimir Diccionario al derecho\n";
+        cout << "6. Imprimir Diccionario al revés\n";
+        cout << "7. Salir\n";
+        cout << "Seleccione una opcion: ";
+        cin >> op;
+
+        switch (op)
+        {
+            case 1:
+                cout << "Codigo del estudiante: ";
+                cin >> cod;
+                if (buscarest(cod))
+                    cout << "El estudiante ya existe\n";
+                else
+                    capturarest(cod);
+                break;
+            case 2:
+                cout << "Codigo del estudiante: ";
+                cin >> cod;
+                imprimirdatos(cod);
+                break;
+            case 3:
+                cout << "Codigo del estudiante a editar: ";
+                cin >> cod;
+                editarest(cod);
+                break;
+            case 4:
+                cout << "Codigo del estudiante a eliminar: ";
+                cin >> cod;
+                eliminarest(cod);
+                break;
+            case 5:
+                cocktailsort();
+            break;
+            case 6:
+                calculardef();
+            break;
+            case 7:
+                visualizarest();
+                calcularprom();
+            break;
+            case 8:
+                cout << "Gracias por usar el programa\n";
+            break;
+            default:
+                cout << "Opcion invalida\n";
+        }
+    } while (op != 8);
+
+    liberarMemoria();
+    return 0;
 }
