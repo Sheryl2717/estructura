@@ -37,12 +37,13 @@ void capturarpal(string buscar)
 {
     diccionario* nuevo = new diccionario();
 
-    nuevo->palabra = buscar;
+    nuevo->palabra = buscar; 
 
     cin.ignore();
 
        cout << "Digite el significado 1: ";
-cin >> nuevo->significado1;
+       cin.ignore();
+       getline(cin, nuevo->significado1);
 
 cout << "Desea añadir otro significado?\n";
 cout << "1. Si\n2. No\n";
@@ -51,7 +52,8 @@ cin >> anadirpal;
     if (anadirpal == 1)
     {
         cout << "Digite el significado 2: ";
-        cin >> nuevo->significado2;
+        cin.ignore();
+        getline(cin, nuevo->significado2);
 
         cout << "Desea añadir otro significado?\n";
         cout << "1. Si\n2. No\n";
@@ -60,7 +62,8 @@ cin >> anadirpal;
         if (anadirpal == 1)
         {
             cout << "Digite el significado 3: ";
-            cin >> nuevo->significado3;
+            cin.ignore();
+            getline(cin, nuevo->significado3);
         }
     }
         nuevo->siguiente = inicio;
@@ -90,7 +93,6 @@ void imprimirpal(string buscar)
             cout << "Significado 3: " << actual->significado3 << endl;
             return;
         }
-        
         actual = actual->siguiente;
     }
 
@@ -135,7 +137,6 @@ void editarpal(string buscar)
             {
                 cout << "Opcion invalida\n";
             }
-
             cout << "Palabra editada con exito\n";
             return;
         }
@@ -183,7 +184,6 @@ void eliminarpal(string buscar)
                 return;
             }
         }
-
         actual = actual->siguiente;
     }
     cout << "La palabra no existe\n";
@@ -220,8 +220,8 @@ void imprider()
             cout << "Significado 1: " << actual->significado1 << endl;
             cout << "Significado 2: " << actual->significado2 << endl;
             cout << "Significado 3: " << actual->significado3 << endl;
-            cout << "------------------------------\n" << actual->significado3 << endl;
-        actual = actual->anterior;
+            cout << "------------------------------\n";
+            actual = actual->anterior;
     }
 }
 
@@ -325,8 +325,8 @@ int main()
             cin >> buscar;
                 if (buscarpal(buscar))
                     {
-                        imprimirpal(buscar);
                         cocktailsort();
+                        imprimirpal(buscar);
                     }
                 else
                     {
